@@ -31,10 +31,7 @@ class NewVisitorTest(unittest.TestCase):
         # "1: Estudar testes funcionais" como um item da lista # TODO
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
-
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn('1: Estudar testes funcionais', [row.text for row in rows])
+        self.check_for_row_in_list_table('1: Estudar testes funcionais')
 
         # Ainda existe uma caixa de texto convidado para adicionar outro item
         # Ele digita: "Estudar testes de unidade"
@@ -44,10 +41,8 @@ class NewVisitorTest(unittest.TestCase):
         time.sleep(1)
 
         # A Pagina atualiza novamente, e agora mostra ambos os itens da sua lista
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn('1: Estudar testes funcionais', [row.text for row in rows])
-        self.assertIn('2: Estudar testes de unidade', [row.text for row in rows])
+        self.check_for_row_in_list_table('1: Estudar testes funcionais')
+        self.check_for_row_in_list_table('2: Estudar testes de unidade')
 
         # Rapha se pergunta se o site vai lembrar da sua lista. Entao, ele verifica que
         # o site gerou uma URL uni a para ele -- existe uma explicacao sobre essa feature
@@ -55,6 +50,11 @@ class NewVisitorTest(unittest.TestCase):
         # Ele visita a URL: a sua lista TODO ainda esta armazenada
 
         # Satisfeito, ele vai mimir
+
+    def check_for_row_in_list_table(self, row_text):
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(row_text, [row.text for row in rows])
 
 if __name__ == '__main__':
     unittest.main()
