@@ -1,30 +1,38 @@
 from selenium import webdriver
+import unittest
 
-browser = webdriver.Firefox()
+class NewVisitorTest(unittest.TestCase):
 
-# Rapha decidiu utilizar o novo app TODO. Ele entra em sua pagina principal:
-browser.get('http://localhost:8000')
+    def test_can_start_a_list_and_retrieve_it_later(self):
 
-# Ele nota que o titulo da pagina menciona TODO
-assert 'To-Do' in browser.title
+        self.browser = webdriver.Firefox()
 
-# Ele eh convidado a entrar com um item TODO imediatamente
+        # Rapha decidiu utilizar o novo app TODO. Ele entra em sua pagina principal:
+        self.browser.get('http://localhost:8000')
 
-# Ele digita "Estudar testes funcionais" em uma caixa de texto
+        # Ele nota que o titulo da pagina menciona TODO
+        self.assertIn('To-Do', self.browser.title)
 
-# Quando ele aperta enter, a pagina atualiza, e mostra a lista
-# "1: Estudar testes funcionais" como um item da lista # TODO
+        # Ele eh convidado a entrar com um item TODO imediatamente
 
-# Ainda existe uma caixa de texto convidado para adicionar outro item
-# Ele digita: "Estudar testes de unidade"
+        # Ele digita "Estudar testes funcionais" em uma caixa de texto
 
-# A Pagina atualiza novamente, e agora mostra ambos os itens da sua lista
+        # Quando ele aperta enter, a pagina atualiza, e mostra a lista
+        # "1: Estudar testes funcionais" como um item da lista # TODO
 
-# Rapha se pergunta se o site vai lembrar da sua lista. Entao, ele verifica que
-# o site gerou uma URL uni a para ele -- existe uma explicacao sobre essa feature
+        # Ainda existe uma caixa de texto convidado para adicionar outro item
+        # Ele digita: "Estudar testes de unidade"
 
-# Ele visita a URL: a sua lista TODO ainda esta armazenada
+        # A Pagina atualiza novamente, e agora mostra ambos os itens da sua lista
 
-# Satisfeito, ele vai mimir
+        # Rapha se pergunta se o site vai lembrar da sua lista. Entao, ele verifica que
+        # o site gerou uma URL uni a para ele -- existe uma explicacao sobre essa feature
 
-browser.quit()
+        # Ele visita a URL: a sua lista TODO ainda esta armazenada
+
+        # Satisfeito, ele vai mimir
+
+        self.browser.quit()
+
+if __name__ == '__main__':
+    unittest.main()
