@@ -1,0 +1,3 @@
+Testes Funcionais: Desenvolvimento em alto nivel, ajudam a constuir uma aplicacao com funcionalidades corretas
+
+Testes de Unidade: Desenvolvimento em nivel mais baixo, protecao contra regressoes
