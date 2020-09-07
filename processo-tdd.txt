@@ -1,0 +1,6 @@
+Para seguir o modelo TDD, podemos utilizar os seguintes passos:
+
+Vamos escrever um teste funcional. Se ele não passar nos testes, ou caso ele precise de refatoracao quando funcionando, nós criamos um teste unitário. 
+Caso o teste unitario nao passe ou precise de refatoracao quando funcionando, criamos um codigo minimo. Fazemos isso ate o teste unitario estar pronto.
+
+Ou seja, a gente cria testes unitarios ate o teste funcional funcionar nao precisar mais de refatoracao. Alem disso, refatoramos cada teste unitario com codigo minimo ate ele estar bem feito.
